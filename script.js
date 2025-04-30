@@ -17,6 +17,43 @@ let isPaused = false;
 let isBreak = false;
 let remainingTime = totalTime;
 
+// Array of hourglass images for each time step
+const hourglassImages = [
+  "hourglass_0.png", // Full hourglass
+  "hourglass_1.png",
+  "hourglass_2.png",
+  "hourglass_3.png",
+  "hourglass_4.png",
+  "hourglass_5.png",
+  "hourglass_6.png",
+  "hourglass_7.png",
+  "hourglass_8.png",
+  "hourglass_9.png", // Almost empty hourglass
+  "hourglass_10.png"  // Empty hourglass
+];
+
+// Get the hourglass image element
+const hourglassImage = document.getElementById("hourglassImage");
+
+// Function to update the hourglass image based on remaining time
+function updateHourglassImage() {
+  const totalSteps = 10; // Divide study time into 10 steps
+  const stepDuration = totalTime / totalSteps; // Duration of each step
+
+  if (isBreak) {
+    // Display a specific image during the break time
+    hourglassImage.src = "hourglass.png"; // Replace with your break image
+  } else {
+    // Update the hourglass image during study time
+    const currentStep = Math.floor((totalTime - remainingTime) / stepDuration);
+
+    // Ensure the step index is within bounds
+    if (currentStep >= 0 && currentStep <= totalSteps) {
+      hourglassImage.src = hourglassImages[currentStep];
+    }
+  }
+}
+
 function updateTimerDisplay(seconds) {
   let minutes = Math.floor(seconds / 60);
   let secs = seconds % 60;
@@ -34,6 +71,7 @@ function toggleTimer() {
         if (remainingTime > 0) {
           remainingTime--;
           updateTimerDisplay(remainingTime);
+          updateHourglassImage(); // Update the hourglass image
         } else {
           clearInterval(timerInterval);
           isRunning = false;
@@ -76,6 +114,7 @@ function resetTimer() {
   cycles = parseInt(cyclesInput.value);
   remainingTime = totalTime;
   updateTimerDisplay(remainingTime);
+  updateHourglassImage(); // Reset the hourglass image
 }
 
 // Event listeners
@@ -114,38 +153,4 @@ musicVolume.addEventListener('input', () => {
   music.volume = musicVolume.value;
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("hourglassCanvas");
-  const ctx = canvas.getContext("2d");
 
-  // Set the border color and background color
-  const borderColor = "#00796B"; // Dark border color
-  const backgroundColor = "#E0F7FA"; // Same as the page background
-
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw the top triangle (border)
-  ctx.beginPath();
-  ctx.moveTo(canvas.width / 2, 20); // Top center
-  ctx.lineTo(20, canvas.height / 2); // Bottom left
-  ctx.lineTo(canvas.width - 20, canvas.height / 2); // Bottom right
-  ctx.closePath();
-  ctx.strokeStyle = borderColor;
-  ctx.lineWidth = 4; // Border thickness
-  ctx.stroke();
-  ctx.fillStyle = backgroundColor;
-  ctx.fill();
-
-  // Draw the bottom triangle (border)
-  ctx.beginPath();
-  ctx.moveTo(canvas.width / 2, canvas.height - 20); // Bottom center
-  ctx.lineTo(20, canvas.height / 2); // Top left
-  ctx.lineTo(canvas.width - 20, canvas.height / 2); // Top right
-  ctx.closePath();
-  ctx.strokeStyle = borderColor;
-  ctx.lineWidth = 4; // Border thickness
-  ctx.stroke();
-  ctx.fillStyle = backgroundColor;
-  ctx.fill();
-});
