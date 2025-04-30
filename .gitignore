@@ -1,0 +1,19 @@
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+
+# macOS system files
+.DS_Store
+
+# Logs
+npm-debug.log*
+
+# Local environment files
+.env
+
+# Music or assets you don't want tracked
+lofi.mp3
+

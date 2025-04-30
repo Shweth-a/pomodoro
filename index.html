@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+  <div class="music-controls">
+    <button id="musicPlayPause">▶️</button>
+    <button id="musicMute">🔈</button>
+    <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="1">
+  </div>
+
+  <audio id="lofiAudio" loop autoplay>
+    <source src="lofi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1>Pomodoro Timer</h1>
+
+    <div class="settings">
+      <label for="totalTime">Total Time (minutes):</label>
+      <input type="number" id="totalTime" value="25" min="1" max="60" />
+
+      <label for="breakTime">Break Time (minutes):</label>
+      <input type="number" id="breakTime" value="5" min="1" max="20" />
+
+      <label for="cycles">Number of Cycles:</label>
+      <input type="number" id="cycles" value="4" min="1" max="10" />
+    </div>
+    
+    <div class="pause_play">
+      <button id="startTimer">▶️ Start</button>
+      <button id="pauseTimer">⏸️ Pause</button>
+      <button id="resetTimer">🔄 Reset</button>
+    </div>
+
+
+    <div id="timerDisplay">
+      <span id="timeRemaining">00:00</span>
+    </div>
+
+    <canvas id="hourglassCanvas" width="300" height="400"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
