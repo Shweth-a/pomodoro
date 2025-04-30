@@ -28,8 +28,8 @@ label {
 }
 
 input {
-  width: 80px;
-  padding: 5px;
+  width: 50px;
+  padding: 3px;
   font-size: 1em;
   text-align: center;
 }
@@ -52,13 +52,7 @@ button:hover {
 #timerDisplay {
   font-size: 2em;
   margin-top: 20px;
-}
-
-#hourglassCanvas {
-  margin-top: 20px;
-  background-color: #B2EBF2;
-  border: 2px solid #00796B;
-  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .music-controls {
@@ -90,3 +84,55 @@ button:hover {
   width: 100px;
 }
 
+.settings-hourglass-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0; /* Adjust spacing between settings and hourglass */
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  gap: 7px; /* Adjust spacing between labels and inputs */
+  flex: 1;
+}
+
+.pause_play {
+  margin-top: 10px; /* Optional: Adjust spacing above the buttons */
+  margin-bottom: 20px;
+}
+
+#hourglassCanvas {
+  width: 150px; /* Set a narrow width to avoid scrolling */
+  height: 100%; /* Match the height of the settings box */
+  background-color: #B2EBF2;
+  border: 2px solid #00796B;
+  margin-left: 0;
+  border-radius: 10px;
+  box-sizing: border-box; /* Include padding and border in height/width */
+}
+
+.settings label {
+  display: inline-block; /* Ensure labels and inputs are inline */
+  width: 150px; /* Set a consistent width for labels */
+  text-align: left; /* Align text to the left */
+}
+
+.settings input {
+  display: inline-block; /* Keep inputs inline with labels */
+  margin-left: 10px; /* Add spacing between label and input */
+  width: 60px; /* Adjust width of input boxes */
+  padding: 3px;
+  font-size: 1em;
+  text-align: left;
+}
+
+#hourglassImage {
+  width: 170px; /* Adjust width as needed */
+  height: 230px; /* Maintain aspect ratio */
+  border: 2px solid #00796B; /* Match the border color */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  box-sizing: border-box; /* Include padding and border in dimensions */
+}

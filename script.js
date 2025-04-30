@@ -114,3 +114,38 @@ musicVolume.addEventListener('input', () => {
   music.volume = musicVolume.value;
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("hourglassCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Set the border color and background color
+  const borderColor = "#00796B"; // Dark border color
+  const backgroundColor = "#E0F7FA"; // Same as the page background
+
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw the top triangle (border)
+  ctx.beginPath();
+  ctx.moveTo(canvas.width / 2, 20); // Top center
+  ctx.lineTo(20, canvas.height / 2); // Bottom left
+  ctx.lineTo(canvas.width - 20, canvas.height / 2); // Bottom right
+  ctx.closePath();
+  ctx.strokeStyle = borderColor;
+  ctx.lineWidth = 4; // Border thickness
+  ctx.stroke();
+  ctx.fillStyle = backgroundColor;
+  ctx.fill();
+
+  // Draw the bottom triangle (border)
+  ctx.beginPath();
+  ctx.moveTo(canvas.width / 2, canvas.height - 20); // Bottom center
+  ctx.lineTo(20, canvas.height / 2); // Top left
+  ctx.lineTo(canvas.width - 20, canvas.height / 2); // Top right
+  ctx.closePath();
+  ctx.strokeStyle = borderColor;
+  ctx.lineWidth = 4; // Border thickness
+  ctx.stroke();
+  ctx.fillStyle = backgroundColor;
+  ctx.fill();
+});
