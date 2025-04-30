@@ -19,17 +19,17 @@ let remainingTime = totalTime;
 
 // Array of hourglass images for each time step
 const hourglassImages = [
-  "hourglass_0.png", // Full hourglass
-  "hourglass_1.png",
-  "hourglass_2.png",
-  "hourglass_3.png",
-  "hourglass_4.png",
-  "hourglass_5.png",
-  "hourglass_6.png",
-  "hourglass_7.png",
-  "hourglass_8.png",
-  "hourglass_9.png", // Almost empty hourglass
-  "hourglass_10.png"  // Empty hourglass
+  "assets/hourglass_0.png", // Full hourglass
+  "assets/hourglass_1.png",
+  "assets/hourglass_2.png",
+  "assets/hourglass_3.png",
+  "assets/hourglass_4.png",
+  "assets/hourglass_5.png",
+  "assets/hourglass_6.png",
+  "assets/hourglass_7.png",
+  "assets/hourglass_8.png",
+  "assets/hourglass_9.png", // Almost empty hourglass
+  "assets/hourglass_10.png"  // Empty hourglass
 ];
 
 // Get the hourglass image element
@@ -42,7 +42,7 @@ function updateHourglassImage() {
 
   if (isBreak) {
     // Display a specific image during the break time
-    hourglassImage.src = "hourglass.png"; // Replace with your break image
+    hourglassImage.src = "assets/hourglass.png"; // Replace with your break image
   } else {
     // Update the hourglass image during study time
     const currentStep = Math.floor((totalTime - remainingTime) / stepDuration);
